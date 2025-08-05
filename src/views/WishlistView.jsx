@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { WishlistContext } from "../context/WishlistContextProvider.jsx";
 
 import styles from "./WishlistView.module.css";
@@ -9,6 +10,7 @@ const WishlistView = () => {
 
   return (
     <div className={styles.wishlistWrapper}>
+      <Link to="/">Back to Menu</Link>
       <h2>Your Wishlist</h2>
       {wishlist.length === 0 ? (
         <p>Your wishlist is empty.</p>
