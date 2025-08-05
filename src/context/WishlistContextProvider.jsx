@@ -3,32 +3,32 @@ import { createContext, useEffect, useState } from "react";
 export const WishlistContext = createContext();
 
 export const WishlistContextProvider = ({ children }) => {
-  const [whishlist, setWhishlist] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    const storedWhishlist = JSON.parse(localStorage.getItem("whishlist")) || [];
-    setWhishlist(storedWhishlist);
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(storedWishlist);
   }, []);
 
-  const addToWhishlist = (item) => {
-    setWhishlist((prev) => {
-      const updatedWhishlist = [...prev, item];
-      localStorage.setItem("whishlist", JSON.stringify(updatedWhishlist));
-      return updatedWhishlist;
+  const addToWishlist = (item) => {
+    setWishlist((prev) => {
+      const updatedWishlist = [...prev, item];
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+      return updatedWishlist;
     });
   };
 
-  const removeFromWhishlist = (itemId) => {
-    setWhishlist((prev) => {
-      const updatedWhishlist = prev.filter((item) => item.id !== itemId);
-      localStorage.setItem("whishlist", JSON.stringify(updatedWhishlist));
-      return updatedWhishlist;
+  const removeFromWishlist = (itemId) => {
+    setWishlist((prev) => {
+      const updatedWishlist = prev.filter((item) => item.idMeal !== itemId);
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+      return updatedWishlist;
     });
   };
 
   return (
     <WishlistContext.Provider
-      value={{ whishlist, addToWhishlist, removeFromWhishlist }}
+      value={{ wishlist, addToWishlist, removeFromWishlist }}
     >
       {children}
     </WishlistContext.Provider>

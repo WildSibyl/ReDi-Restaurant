@@ -11,15 +11,15 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<WishlistContextProvider />}>
+      <WishlistContextProvider>
+        <Routes>
           <Route index element={<RestaurantView />} />
           <Route path="/meals/:id" element={<MenuItemDetails />} />
-          <Route path="/whishlist" element={<WishListView />} />
+          <Route path="/wishlist" element={<WishListView />} />
           {/* Add more routes as needed */}
           <Route path="/*" element={<p>404 Page not found</p>} />
-        </Route>
-      </Routes>
+        </Routes>
+      </WishlistContextProvider>
     </Router>
   );
 }
